@@ -30,11 +30,11 @@ class _GuessPageState extends State<GuessPage> {
     print('check_value:$_value------${_guessCtrl.text}');
 
     int? guessValue = int.tryParse(_guessCtrl.text);
-    if(!_guessing || guessValue== null ) return ;
+    if (!_guessing || guessValue == null) return;
 
-    if(guessValue == _value){
+    if (guessValue == _value) {
       setState(() {
-        _isBig=null;
+        _isBig = null;
         _guessing = false;
       });
       return;
@@ -43,7 +43,6 @@ class _GuessPageState extends State<GuessPage> {
     setState(() {
       _isBig = guessValue > _value;
     });
-
   }
 
   void _generateRandomValue() {
@@ -62,16 +61,15 @@ class _GuessPageState extends State<GuessPage> {
       ),
       body: Stack(
         children: [
-          if(_isBig!=null)
-          Column(
-            children: [
-              if(_isBig!)
-              ResultNotice(Colors.redAccent, '大了'),
-              Spacer(),
-              if(!_isBig!)
-              ResultNotice(Colors.blueAccent, '小了'),
-            ],
-          ),
+          if (_isBig != null)
+            Column(
+              children: [
+                if (_isBig!) ResultNotice(color: Colors.redAccent, info: '大了'),
+                Spacer(),
+                if (!_isBig!)
+                  ResultNotice(color: Colors.blueAccent, info: '小了'),
+              ],
+            ),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
