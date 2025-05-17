@@ -33,4 +33,4 @@ flutter:
   assets:
     - assets/images/maodie.jpg
     - assets/images/muyu.png
-    # - assets/audio
+    - assets/audio/

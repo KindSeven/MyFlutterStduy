@@ -91,8 +91,8 @@ class _GuessPageState extends State<GuessPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _guessing ? null : _generateRandomValue,
         tooltip: 'Increment',
-        child: const Icon(Icons.generating_tokens_outlined),
         backgroundColor: _guessing ? Colors.grey : Colors.blue,
+        child: const Icon(Icons.generating_tokens_outlined),
       ),
     );
   }

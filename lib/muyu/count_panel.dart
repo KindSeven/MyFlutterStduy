@@ -39,15 +39,15 @@ class CountPanel extends StatelessWidget {
             children: [
               ElevatedButton(
                   onPressed: () {},
+                  style: style,
                   child: Icon(
                     Icons.music_note_outlined,
                     color: Colors.white,
-                  ),
-                  style: style),
+                  )),
               ElevatedButton(
                   onPressed: () {},
-                  child: Icon(Icons.image, color: Colors.white),
-                  style: style),
+                  style: style,
+                  child: Icon(Icons.image, color: Colors.white)),
             ],
           ),
         ),

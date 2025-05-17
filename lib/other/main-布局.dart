@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const textStyle = const TextStyle(
+const textStyle = TextStyle(
   fontFamily: 'Roboto',
 );
 void main() => runApp(const MyApp());
@@ -264,9 +264,7 @@ class _FocusTestRouteState extends State<FocusTestRoute> {
                       //将焦点从第一个TextField移到第二个TextField
                       // 这是一种写法 FocusScope.of(context).requestFocus(focusNode2);
                       // 这是第二种写法
-                      if (null == focusScopeNode) {
-                        focusScopeNode = FocusScope.of(context);
-                      }
+                      focusScopeNode ??= FocusScope.of(context);
                       focusScopeNode?.requestFocus(focusNode2);
                     },
                   ),
@@ -408,21 +406,21 @@ class ResponsiveColumn extends StatelessWidget {
       builder: (BuildContext context, BoxConstraints constraints) {
         if (constraints.maxWidth < 200) {
           // 最大宽度小于200，显示单列
-          return Column(children: children, mainAxisSize: MainAxisSize.min);
+          return Column(mainAxisSize: MainAxisSize.min, children: children);
         } else {
           // 大于200，显示双列
-          var _children = <Widget>[];
+          var children = <Widget>[];
           for (var i = 0; i < children.length; i += 2) {
             if (i + 1 < children.length) {
-              _children.add(Row(
-                children: [children[i], children[i + 1]],
+              children.add(Row(
                 mainAxisSize: MainAxisSize.min,
+                children: [children[i], children[i + 1]],
               ));
             } else {
-              _children.add(children[i]);
+              children.add(children[i]);
             }
           }
-          return Column(children: _children, mainAxisSize: MainAxisSize.min);
+          return Column(children: children, mainAxisSize: MainAxisSize.min);
         }
       },
     );
@@ -435,14 +433,14 @@ class LayoutBuilderRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _children = List.filled(4, Text("A"));
+    var children = List.filled(4, Text("A"));
     // Column在本示例中在水平方向的最大宽度为屏幕的宽度
     return Column(
       children: [
         // 限制宽度为190，小于 200
-        SizedBox(width: 90, child: ResponsiveColumn(children: _children)),
+        SizedBox(width: 90, child: ResponsiveColumn(children: children)),
         SizedBox(width: 200,height: 200,),
-        ResponsiveColumn(children: _children),
+        ResponsiveColumn(children: children),
         // LayoutLogPrint(child:Text("xx")) // 下面介绍
       ],
     );
