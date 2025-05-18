@@ -38,14 +38,14 @@ class CountPanel extends StatelessWidget {
             spacing: 8,
             children: [
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed:onTapSwitchAudio,
                   style: style,
                   child: Icon(
                     Icons.music_note_outlined,
                     color: Colors.white,
                   )),
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed:onTapSwitchImage,
                   style: style,
                   child: Icon(Icons.image, color: Colors.white)),
             ],

@@ -32,5 +32,5 @@ flutter:
           weight: 700
   assets:
     - assets/images/maodie.jpg
-    - assets/images/muyu.png
+    - assets/images/
     - assets/audio/
