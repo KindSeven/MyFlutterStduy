@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
+import 'package:wangdemo/muyu/merit_record.dart';
 import 'muyu_AppBar.dart';
 import 'count_panel.dart';
 import 'muyu_assets_image.dart';
@@ -34,6 +36,9 @@ class _MuyuPageState extends State<MuyuPage> {
     AudioOption('音效2', 'muyu_2.mp3'),
     AudioOption('音效3', 'muyu_3.mp3'),
   ];
+  final List<MeritRecord> _record = [];
+  final Uuid uuid = Uuid();
+  MeritRecord? _curRecord;
 
   int get knockValue {
     int min = imageOptions[_activeimageIndex].min;
@@ -89,7 +94,12 @@ class _MuyuPageState extends State<MuyuPage> {
     setState(() {
       _cruValue = knockValue;
       _count += _cruValue;
+
+      String id =uuid.v4();
+      _curRecord=MeritRecord(id,DateTime.now().millisecondsSinceEpoch,_cruValue,activeImage,audioOptions[_activeAudioIndex].name);
+      _record.add(_curRecord!);
     });
+    // print( _record);
   }
 
   void _initAudioPool() async {
@@ -120,7 +130,7 @@ class _MuyuPageState extends State<MuyuPage> {
                 image: activeImage,
                 onTap: _onKnock,
               ),
-              if (_cruValue != 0) AnimateText(text: '功德+$_cruValue')
+              if (_cruValue != 0) AnimateText(text: '功德+$_cruValue',record: _curRecord!,)
             ]))
           ],
         ));
