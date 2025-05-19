@@ -87,7 +87,10 @@ class _MuyuPageState extends State<MuyuPage> {
         });
   }
 
-  void _toHistory() {}
+  void _toHistory() {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (_) => RecordHistory(records: _record.reversed.toList())));
+  }
 
   void _onKnock() {
     pool?.start();
@@ -95,8 +98,9 @@ class _MuyuPageState extends State<MuyuPage> {
       _cruValue = knockValue;
       _count += _cruValue;
 
-      String id =uuid.v4();
-      _curRecord=MeritRecord(id,DateTime.now().millisecondsSinceEpoch,_cruValue,activeImage,audioOptions[_activeAudioIndex].name);
+      String id = uuid.v4();
+      _curRecord = MeritRecord(id, DateTime.now().millisecondsSinceEpoch,
+          _cruValue, activeImage, audioOptions[_activeAudioIndex].name);
       _record.add(_curRecord!);
     });
     // print( _record);
@@ -115,7 +119,7 @@ class _MuyuPageState extends State<MuyuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: MuyuAppBar(),
+        appBar: MuyuAppBar(toHistroy: _toHistory,),
         body: Column(
           children: [
             // Text('MuyuPage'),
@@ -130,7 +134,11 @@ class _MuyuPageState extends State<MuyuPage> {
                 image: activeImage,
                 onTap: _onKnock,
               ),
-              if (_cruValue != 0) AnimateText(text: '功德+$_cruValue',record: _curRecord!,)
+              if (_cruValue != 0)
+                AnimateText(
+                  text: '功德+$_cruValue',
+                  record: _curRecord!,
+                )
             ]))
           ],
         ));

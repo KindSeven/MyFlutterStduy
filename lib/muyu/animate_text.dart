@@ -34,9 +34,8 @@ class _AnimateTextState extends State<AnimateText>
   @override
   void didUpdateWidget(covariant AnimateText oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.record.id != widget.record.id) {
       controller.forward(from: 0);
-    }
+    
   }
 
   @override

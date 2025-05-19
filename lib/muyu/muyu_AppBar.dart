@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 class MuyuAppBar extends StatelessWidget implements PreferredSizeWidget{
-  const MuyuAppBar({Key? key}) : super(key: key);
+  final VoidCallback _toHistroy;
+  const MuyuAppBar({Key? key,required VoidCallback toHistroy}) : _toHistroy = toHistroy, super(key: key);
 
 
-  void _toHistroy(){
-    //TODO
-  }
+
 
   @override
   Widget build(BuildContext context) {
