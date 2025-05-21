@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wangdemo/menu/AppBottomBar.dart';
+import 'package:wangdemo/menu/AppNavigation.dart';
 import 'muyu/muyupage.dart';
 void main() {
   runApp(const MyApp());
@@ -14,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MuyuPage(),
+      home: AppNavigation(),
+      // home: MuyuPage(),
     );
   }
 }

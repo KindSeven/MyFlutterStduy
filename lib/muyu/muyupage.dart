@@ -18,7 +18,8 @@ class MuyuPage extends StatefulWidget {
   State<MuyuPage> createState() => _MuyuPageState();
 }
 
-class _MuyuPageState extends State<MuyuPage> {
+class _MuyuPageState extends State<MuyuPage>
+    with AutomaticKeepAliveClientMixin {
   int _count = 0;
   final Random _random = Random();
   AudioPool? pool;
@@ -39,6 +40,9 @@ class _MuyuPageState extends State<MuyuPage> {
   final List<MeritRecord> _record = [];
   final Uuid uuid = Uuid();
   MeritRecord? _curRecord;
+
+  @override
+  bool get wantKeepAlive => true;
 
   int get knockValue {
     int min = imageOptions[_activeimageIndex].min;
@@ -118,8 +122,11 @@ class _MuyuPageState extends State<MuyuPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
-        appBar: MuyuAppBar(toHistroy: _toHistory,),
+        appBar: MuyuAppBar(
+          toHistroy: _toHistory,
+        ),
         body: Column(
           children: [
             // Text('MuyuPage'),
