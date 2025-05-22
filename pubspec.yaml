@@ -17,6 +17,7 @@ dependencies:
   flame_audio: ^2.11.5
   uuid: ^4.4.2
   intl: ^0.20.2
+  dio: ^5.8.0+1
 
 
 dev_dependencies:

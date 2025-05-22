@@ -3,6 +3,7 @@ import 'package:wangdemo/guess/guess_page.dart';
 import 'package:wangdemo/menu/AppBottomBar.dart';
 import 'package:wangdemo/menu/model/MenuData.dart';
 import 'package:wangdemo/muyu/muyupage.dart';
+import 'package:wangdemo/net_article/views/net_article_page.dart';
 
 class AppNavigation extends StatefulWidget {
   const AppNavigation({Key? key}) : super(key: key);
@@ -17,6 +18,7 @@ class _AppNavigationState extends State<AppNavigation>  {
   final List<MenuData> menus = const [
     MenuData(label: '猜数字', icon: Icons.question_mark),
     MenuData(label: '电子木鱼', icon: Icons.my_library_music_outlined),
+    MenuData(label: '网络文章',icon: Icons.article_outlined)
   ];
 
 
@@ -34,7 +36,8 @@ class _AppNavigationState extends State<AppNavigation>  {
       controller: _ctrl,
       children: [
         GuessPage(title: '222'),
-        MuyuPage()
+        MuyuPage(),
+        NetArticlePage()
       ],
     );
   }
